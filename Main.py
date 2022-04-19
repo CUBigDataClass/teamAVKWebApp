@@ -1,8 +1,6 @@
-from crypt import methods
 from urllib import response
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, session
 import pymongo
-import bcrypt
 
 app = Flask(__name__)
 app.secret_key = "testing"
@@ -16,13 +14,12 @@ def sign_out(user=""):
     session.pop("email", None)
     return render_template('pages-login.html', user=user)
 
-@app.route('/home_page')
+@app.route('/')
 def home_page(user=""):
    return render_template('index.html', user=user)
 
 @app.route('/search', methods=['post'])
 def search(user=""):
-    
     user = request.form.get('query')
     return render_template('sample.html', user=user)
 
@@ -50,50 +47,6 @@ def pages_contact():
         print(user)
     return render_template('pages-contact.html', user=user)
 
-@app.route('/pages_register', methods=['post','get'])
-def pages_register():
-    message=''
-    
-    if request.method == "POST":
-        fullname = request.form.get("name")
-        user = request.form.get("username")
-        email = request.form.get("email")
-        password1 = request.form.get("password1")
-        password2 = request.form.get("password2")
-        address = request.form.get("address")
-        country = request.form.get("country")
-        phone = request.form.get("phone")
-        
-        user_found = records.find_one({"name": user})
-        email_found = records.find_one({"email": email})
-        print(user)
-
-        if user_found:
-            message = 'There already is a user by that name'
-            print(message)
-            return render_template('pages-register.html', message=message)
-        
-        if email_found:
-            message = 'This email already exists in database'
-            print(message)
-            return render_template('pages-register.html', message=message)
-        
-        if password1 != password2:
-            message = 'Passwords should match!'
-            print(message)
-            return render_template('pages-register.html', message=message)
-        else:
-            hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
-            user_input = {'name': user, 'email': email, 'password': hashed, 'fullname': fullname, 'country':country, 'address':address, 'phone':phone }
-            print(user_input)
-
-            records.insert_one(user_input)
-            session['email'] = email
-
-            return render_template('index.html', user=user_input)
-            
-    return render_template('pages-register.html')
-
 @app.route('/', methods=['post','get'])
 def pages_login():
     message=''
@@ -103,32 +56,6 @@ def pages_login():
         user = {'name': user_found["name"], 'email': user_found["email"], 'password': user_found["password"], 'fullname': user_found["fullname"], 'country': user_found["country"], 'address':user_found["address"], 'phone':user_found["phone"] }
         print(user)
         return render_template('index.html', user=user)
-
-    if request.method == "POST":
-        user = request.form.get("username")
-        password = request.form.get("password")
-    
-        user_found = records.find_one({"name": user})
-
-        if user_found:
-            passwordcheck = user_found['password']            
-            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
-                session["email"] = user_found["email"]
-                user = {'name': user_found["name"], 'email': user_found["email"], 'password': user_found["password"], 'fullname': user_found["fullname"], 'country': user_found["country"], 'address':user_found["address"], 'phone':user_found["phone"] }
-                print(user)
-                return render_template('index.html', user=user)
-            else:
-                if "email" in session:
-                    user_found = records.find_one({"email": session["email"]})
-                    user = {'name': user_found["name"], 'email': user_found["email"], 'password': user_found["password"], 'fullname': user_found["fullname"], 'country': user_found["country"], 'address':user_found["address"], 'phone':user_found["phone"] }
-                    print(user)
-                    return render_template('index.html', user=user)
-                message = 'Wrong password'
-                return render_template('pages-login.html', message=message)
-        else:
-            message = 'Email not found'
-            return render_template('pages-login.html', message=message)
-    return render_template('pages-login.html')
 
 @app.route('/pages_error_404')
 def pages_error_404():
