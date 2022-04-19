@@ -208,6 +208,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Card */
+
+.container {
+  display: block;
+  width: 100%;
+}
+
+.container .card:first-child {
+  margin-left: 0;
+}
+
+.container .card:nth-child(2n) {
+  margin-right: 0;
+}
+
+
+/*first-element of the 2nd row*/
+
+.container .card:nth-child(2n+1) {
+  margin-left: 0;
+}
+
+
+/*last element*/
+
+.container .card:last-child {
+  margin-right: 0;
+}
+
 .card {
   margin-bottom: 30px;
   border: none;
