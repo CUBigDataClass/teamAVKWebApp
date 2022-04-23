@@ -1,12 +1,17 @@
 from urllib import response
 from flask import Flask, render_template, request, session
 import pymongo
+import requests
+import json
 
 app = Flask(__name__)
 app.secret_key = "testing"
 client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
 db = client.get_database('total_records')
 records = db.register
+
+scrapper = "http://127.0.0.1:5001/fetchprod?name="
+
 
 @app.route('/sign_out')
 def sign_out(user=""):
@@ -21,7 +26,12 @@ def home_page(user=""):
 @app.route('/search', methods=['post'])
 def search(user=""):
     user = request.form.get('query')
-    return render_template('sample.html', user=user)
+    response = requests.get(url = scrapper+user)
+    data = response.json()
+    products_list = data['result']
+    products_list = products_list[0:6]
+
+    return render_template('sample.html', user=products_list)
 
 @app.route('/pages_faq')
 def pages_faq():

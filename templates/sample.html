@@ -248,14 +248,12 @@
       <div class="row">
           <div class="col-lg-4 mb-4">
               <div class="card">
-                  <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
+                  <img class="card-img-top" src= {{user[0]['shopping_results'][0]['title']}} alt="" class="img-fluid">
 
                   <div class="card-body">
-                      <h5 class="card-title">{{user}}</h5>
+                      <h5 class="card-title">{{user[0]['shopping_results'][0]['title']}}</h5>
                       <p class="card-text">
-                          Some quick example text to build on 
-                          the card title and make up the bulk 
-                          of the card's content.
+                          Price 
                       </p>
 
                       <a href="#" class="btn btn-outline-primary btn-sm">
@@ -296,7 +294,7 @@
                 <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
 
                 <div class="card-body">
-                    <h5 class="card-title">{{user}}</h5>
+                    <h5 class="card-title">{{{user[1]['shopping_results'][0]['title']}}}</h5>
                     <p class="card-text">
                         Some quick example text to build on 
                         the card title and make up the bulk 
@@ -341,7 +339,7 @@
                 <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
 
                 <div class="card-body">
-                    <h5 class="card-title">{{user}}</h5>
+                    <h5 class="card-title">{{{user[2]['shopping_results'][0]['title']}}}</h5>
                     <p class="card-text">
                         Some quick example text to build on 
                         the card title and make up the bulk 
@@ -433,7 +431,7 @@
               <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
 
               <div class="card-body">
-                  <h5 class="card-title">{{user}}</h5>
+                  <h5 class="card-title">{{{user[3]['shopping_results'][0]['title']}}}</h5>
                   <p class="card-text">
                       Some quick example text to build on 
                       the card title and make up the bulk 
@@ -453,7 +451,7 @@
               <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="">
 
               <div class="card-body">
-                  <h5 class="card-title">{{user}}</h5>
+                  <h5 class="card-title">{{{user[4]['shopping_results'][0]['title']}}}</h5>
                   <p class="card-text">
                       Some quick example text to build on the 
                       card title and make up the bulk of the 
@@ -473,7 +471,7 @@
             <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
 
             <div class="card-body">
-                <h5 class="card-title">{{user}}</h5>
+                <h5 class="card-title">{{{user[5]['shopping_results'][0]['title']}}}</h5>
                 <p class="card-text">
                     Some quick example text to build on 
                     the card title and make up the bulk 
