@@ -244,113 +244,270 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
-      <div class = "container">
-      <div class="card text-center">
-        <div class="col-lg-5">
-          <!-- Card with titles, buttons, and links -->
-          <div class="card">
-            <!-- <div class="row g-0"> -->
-            <img src="{{ url_for('static', filename = 'img/card.jpg')}} " class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{user}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p class="card-text"><a href="#" class="btn btn-primary">Button</a></p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          <!-- </div> -->
-          </div><!-- End Card with titles, buttons, and links -->
-          
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-4 mb-4">
+              <div class="card">
+                  <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
 
-          <div class="card">
-          <img src="{{ url_for('static', filename = 'img/card.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{user}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p class="card-text"><a href="#" class="btn btn-primary">Button</a></p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- End Card with titles, buttons, and links -->
+                  <div class="card-body">
+                      <h5 class="card-title">{{user}}</h5>
+                      <p class="card-text">
+                          Some quick example text to build on 
+                          the card title and make up the bulk 
+                          of the card's content.
+                      </p>
 
-        
-          <div class="card">
-            <img src="a{{ url_for('static', filename = 'img/card.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{user}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p class="card-text"><a href="#" class="btn btn-primary">Button</a></p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- End Card with titles, buttons, and links -->
+                      <a href="#" class="btn btn-outline-primary btn-sm">
+                          Card link
+                      </a>
+                      <a href="#" class="btn btn-outline-secondary btn-sm">
+                          <i class="far fa-heart"></i></a>
+                          <canvas id="pieChart" style="max-height: 100px;"></canvas>
+                          <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                              new Chart(document.querySelector('#pieChart'), {
+                                type: 'pie',
+                                data: {
+                                  labels: [
+                                    'Red',
+                                    'Blue',
+                                    'Yellow'
+                                  ],
+                                  datasets: [{
+                                    label: 'My First Dataset',
+                                    data: [300, 50, 100],
+                                    backgroundColor: [
+                                      'rgb(255, 99, 132)',
+                                      'rgb(54, 162, 235)',
+                                      'rgb(255, 205, 86)'
+                                    ],
+                                    hoverOffset: 4
+                                  }]
+                                }
+                              });
+                            });
+                          </script>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
 
-          
-          <div class="card">
-            <img src="{{ url_for('static', filename = 'img/card.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{user}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p class="card-text"><a href="#" class="btn btn-primary">Button</a></p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- End Card with titles, buttons, and links -->
+                <div class="card-body">
+                    <h5 class="card-title">{{user}}</h5>
+                    <p class="card-text">
+                        Some quick example text to build on 
+                        the card title and make up the bulk 
+                        of the card's content.
+                    </p>
 
-          <!-- Card with titles, buttons, and links -->>
-          <div class="card">
-            <img src="{{ url_for('static', filename = 'img/card.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{user}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p class="card-text"><a href="#" class="btn btn-primary">Button</a></p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+                    <a href="#" class="btn btn-outline-primary btn-sm">
+                        Card link
+                    </a>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">
+                        <i class="far fa-heart"></i></a>
+                        <canvas id="pieChart" style="max-height: 100px;"></canvas>
+                        <script>
+                          document.addEventListener("DOMContentLoaded", () => {
+                            new Chart(document.querySelector('#pieChart'), {
+                              type: 'pie',
+                              data: {
+                                labels: [
+                                  'Red',
+                                  'Blue',
+                                  'Yellow'
+                                ],
+                                datasets: [{
+                                  label: 'My First Dataset',
+                                  data: [300, 50, 100],
+                                  backgroundColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(255, 205, 86)'
+                                  ],
+                                  hoverOffset: 4
+                                }]
+                              }
+                            });
+                          });
+                        </script>
+                </div>
             </div>
-          </div><!-- End Card with titles, buttons, and links -->
-
-          <!-- Card with titles, buttons, and links -->
-          <div class="card">
-            <img src="a{{ url_for('static', filename = 'img/card.jpg') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{user}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p class="card-text"><a href="#" class="btn btn-primary">Button</a></p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- End Card with titles, buttons, and links -->
         </div>
+          <div class="col-lg-4 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{user}}</h5>
+                    <p class="card-text">
+                        Some quick example text to build on 
+                        the card title and make up the bulk 
+                        of the card's content.
+                    </p>
+
+                    <a href="#" class="btn btn-outline-primary btn-sm">
+                        Card link
+                    </a>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">
+                        <i class="far fa-heart"></i></a>
+                </div>
+            </div>
         </div>
-    </section>
+      </div>
+  </div>
 
-    <table id="table" data-toggle="table" class="display table table-bordered" data-url= "static/json/data.json" data-height="299">
-        <thead>
-            <tr>
-                <th data-field="name">Name</th>
-                <th data-field="description">Description</th>
-                
-            </tr>
-        </thead>
-    </table>
+  <!-- <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-2">
+                <div class="card">
+                    <img class="card-img-top" src="" alt="">
+  
+                    <div class="card-body">
+                        <h5 class="card-title">{{user}}</h5>
+                        <p class="card-text">
+                            Some quick example text to build on 
+                            the card title and make up the bulk 
+                            of the card's content.
+                        </p>
+  
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            Card link
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-2">
+                <div class="card">
+                    <img class="card-img-top" src="" alt="">
+  
+                    <div class="card-body">
+                        <h5 class="card-title">{{user}}</h5>
+                        <p class="card-text">
+                            Some quick example text to build on the 
+                            card title and make up the bulk of the 
+                            card's content.
+                        </p>
+                          
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            Card link
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card">
+              <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+              <div class="card-body">
+                  <h5 class="card-title">{{user}}</h5>
+                  <p class="card-text">
+                      Some quick example text to build on 
+                      the card title and make up the bulk 
+                      of the card's content.
+                  </p>
+
+                  <a href="#" class="btn btn-outline-primary btn-sm">
+                      Card link
+                  </a>
+                  <a href="#" class="btn btn-outline-secondary btn-sm">
+                      <i class="far fa-heart"></i></a>
+              </div>
+          </div>
+      </div>
+    </div>
+    
+</div> -->
+
+<div class="container">
+  <div class="row">
+      <div class="col-lg-4 mb-4">
+          <div class="card">
+              <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
+
+              <div class="card-body">
+                  <h5 class="card-title">{{user}}</h5>
+                  <p class="card-text">
+                      Some quick example text to build on 
+                      the card title and make up the bulk 
+                      of the card's content.
+                  </p>
+
+                  <a href="#" class="btn btn-outline-primary btn-sm">
+                      Card link
+                  </a>
+                  <a href="#" class="btn btn-outline-secondary btn-sm">
+                      <i class="far fa-heart"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+          <div class="card">
+              <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="">
+
+              <div class="card-body">
+                  <h5 class="card-title">{{user}}</h5>
+                  <p class="card-text">
+                      Some quick example text to build on the 
+                      card title and make up the bulk of the 
+                      card's content.
+                  </p>
+                    
+                  <a href="#" class="btn btn-outline-primary btn-sm">
+                      Card link
+                  </a>
+                  <a href="#" class="btn btn-outline-secondary btn-sm">
+                      <i class="far fa-heart"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename = 'img/card.jpg')}}" alt="" class="img-fluid">
+
+            <div class="card-body">
+                <h5 class="card-title">{{user}}</h5>
+                <p class="card-text">
+                    Some quick example text to build on 
+                    the card title and make up the bulk 
+                    of the card's content.
+                </p>
+
+                <a href="#" class="btn btn-outline-primary btn-sm">
+                    Card link
+                </a>
+                <a href="#" class="btn btn-outline-secondary btn-sm">
+                    <i class="far fa-heart"></i></a>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<table id="table" data-toggle="table" class="display table table-bordered" data-url= "static/json/data.json" data-height="299">
+  <thead>
+      <tr>
+          <th data-field="name">Name</th>
+          <th data-field="description">Description</th>
+          
+      </tr>
+  </thead>
+</table>
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
 
 
-
-
-
-
+    
 
   </main><!-- End #main -->
 
@@ -377,18 +534,11 @@
   <!-- Template Main JS File -->
   <script src="{{ url_for('static', filename = 'js/main.js') }}"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>
+
+
+
+
+
