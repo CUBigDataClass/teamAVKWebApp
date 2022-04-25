@@ -1,5 +1,5 @@
 from urllib import response
-from flask import Flask, render_template, request, session
+from flask import Flask, redirect, render_template, request, session
 import pymongo
 import requests
 import json
@@ -22,9 +22,10 @@ def sign_out(user=""):
 
 @app.route('/')
 def home_page(user=""):
-   return render_template('index.html', user=user)
+    return redirect('/categories/Mobile')
+    # return render_template('index.html', user=user)
 
-@app.route('/categories' )
+@app.route('/categories/<string:user>', methods = ['get'])
 def categories(user):
     response = requests.get(url = scrapper+user)
     data = response.json()
@@ -41,54 +42,7 @@ def search(user=""):
     products_list = data['result']
     products_list = products_list[0:9]
     return render_template('sample.html', user=products_list, name = user)
-#     dummy = [
-#     {
-#       "shopping_results": [
-#         {
-#           "link": "https://stockx.com/air-jordan-1-retro-high-og-seafoam-ps%3Fcountry%3DUS%26currencyCode%3DUSD%26size%3D12C%26srsltid%3DAWLEVJzkme5036bgKY-I9Tszk7eGrdtI_EcMRp4PrJ536zICLpIH08E3fs4&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykIJA&usg=AOvVaw3z0n728kCMKu-6gVo5VT5e", 
-#           "price": "$111.00", 
-#           "title": "StockXOpens in a new window"
-#         }
-#       ]
-#     }, 
-#     {
-#       "shopping_results": [
-#         {
-#           "link": "https://www.goat.com/sneakers/air-jordan-1-retro-high-og-ps-seafoam-cu0449-002&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykIKA&usg=AOvVaw36NXnrKBXX7SqUjC_HzMxw", 
-#           "price": "$116.00", 
-#           "title": "GOATOpens in a new window"
-#         }
-#       ]
-#     }, 
-#     {
-#       "shopping_results": [
-#         {
-#           "link": "https://www.flightclub.com/air-jordan-1-retro-high-og-ps-seafoam-cu0449-002&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykILQ&usg=AOvVaw3zoP2NVVzoUvQSIOuFRw-v", 
-#           "price": "$116.00", 
-#           "title": "Flight ClubOpens in a new window"
-#         }
-#       ]
-#     }, 
-#     {
-#       "shopping_results": [
-#         {
-#           "link": "https://www.kickscrew.com/products/air-jordan-1-retro-high-og-ps-seafoam-cu0449-002%3Fvariant%3D40913738498243%26currency%3DUSD%26utm_medium%3Dproduct_sync%26utm_source%3Dgoogle%26utm_content%3Dsag_organic%26utm_campaign%3Dsag_organic%26srsltid%3DAWLEVJz6tFu00CRw3bAw3-yOIanhk4qk_aoWwU1RuCf6eyDzm8M8itb8nLw&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykIMQ&usg=AOvVaw1bSc7LcmVcHg1TIigW_qso", 
-#           "price": "$190.00", 
-#           "title": "kickscrew.comOpens in a new window"
-#         }
-#       ]
-#     }, 
-#     {
-#       "shopping_results": [
-#         {
-#           "link": "https://www.farfetch.com/shopping/kids/jordan-kids-air-jordan-1-retro-high-og-sneakers-item-17234149.aspx%3Ffsb%3D1%26size%3D20%26storeid%3D11218&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykINQ&usg=AOvVaw0DzWpVKj8LoI-LmndoJUsW", 
-#           "price": "$147.00", 
-#           "title": "farfetch.comOpens in a new window"
-#         }
-#       ]
-#     }
-#   ]
-#     return render_template('comparison.html', user = dummy)
+#     
 
 @app.route('/comparison', methods = ['post'])
 def compare():

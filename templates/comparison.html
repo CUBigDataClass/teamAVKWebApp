@@ -200,35 +200,35 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link " href="{{ url_for('home_page') }}">
-          <i class="bi bi-grid"></i>
-          <span>Electronis</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('components') }}">
-          <i class="bi bi-journal-text"></i>
-          <span>Home Essentials</span>
-        </a>
-      </li><!-- End Components Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('group_view') }}">
-          <i class="bi bi-journal-text"></i>
-          <span>Beauty</span>
-        </a>
-      </li><!-- End Components Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('bluetooth_devices') }}">
-          <i class="bi bi-journal-text"></i>
-          <span>clothing</span>
-        </a>
-      </li><!-- End Components Nav -->
-      
-    </ul>
+        <li class="nav-item">
+          <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Mobile') }}">
+            <i class="bi bi-grid"></i>
+            <span>Electronis</span>
+          </a>
+        </li><!-- End Dashboard Nav -->
+  
+        <li class="nav-item">
+          <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Home Essentials') }}">
+            <i class="bi bi-journal-text"></i>
+            <span>Home Essentials</span>
+          </a>
+        </li><!-- End Components Nav -->
+  
+        <li class="nav-item">
+          <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Beauty') }}">
+            <i class="bi bi-journal-text"></i>
+            <span>Beauty</span>
+          </a>
+        </li><!-- End Components Nav -->
+  
+        <li class="nav-item">
+          <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Clothing') }}">
+            <i class="bi bi-journal-text"></i>
+            <span>clothing</span>
+          </a>
+        </li><!-- End Components Nav -->
+        
+      </ul>
 
   </aside><!-- End Sidebar-->
 

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BLE Mesh Project</title>
+  <title>Product Search</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -201,28 +201,28 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{{ url_for('home_page') }}">
+        <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Mobile') }}">
           <i class="bi bi-grid"></i>
           <span>Electronis</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('components') }}">
+        <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Home Essentials') }}">
           <i class="bi bi-journal-text"></i>
           <span>Home Essentials</span>
         </a>
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('group_view') }}">
+        <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Beauty') }}">
           <i class="bi bi-journal-text"></i>
           <span>Beauty</span>
         </a>
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url_for('bluetooth_devices') }}">
+        <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Clothing') }}">
           <i class="bi bi-journal-text"></i>
           <span>clothing</span>
         </a>
