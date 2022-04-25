@@ -263,6 +263,41 @@
          {% endfor %}
     </thead>
   </table>
+<br>
+<br>
+<br>
+  <div class="pagetitle">
+    <h1>What Customers think about this products</h1>
+  </div>
+<br>
+<br>
+
+  <canvas id="pieChart" style="max-height: 400px;"></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#pieChart'), {
+                    type: 'pie',
+
+                    data: {
+                      labels: [
+                        'Red',
+                        'Blue',
+                        'Yellow'
+                      ],
+                      datasets: [{
+                        label: 'My First Dataset',
+                        data: ['{{reviews['shopping_results'][0]['positive']}}', '{{reviews['shopping_results'][0]['neutral']}}', '{{reviews['shopping_results'][0]['negative']}}'],
+                        backgroundColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(54, 162, 235)',
+                          'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                      }]
+                    }
+                  });
+                });
+              </script>
   
   <!-- <script src="https://code.jquery.com/jquery.min.js"></script>
   <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
