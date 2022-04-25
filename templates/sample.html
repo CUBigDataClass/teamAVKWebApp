@@ -235,7 +235,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Electronics</h1>
+      <h1>Search Results for {{name}}</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{url_for('home_page')}}">Home</a></li>
@@ -260,36 +260,19 @@
 
                       
 
-                      <a href="{{user[0]['shopping_results'][0]['link']}}" class="btn btn-primary">
+                      <a href="{{user[0]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
                           Visit Site
                       </a>
-                      <a href="#" class="btn btn-outline-secondary btn-sm">
-                          <i class="far fa-heart"></i></a>
-                          <canvas id="pieChart" style="max-height: 100px;"></canvas>
-                          <script>
-                            document.addEventListener("DOMContentLoaded", () => {
-                              new Chart(document.querySelector('#pieChart'), {
-                                type: 'pie',
-                                data: {
-                                  labels: [
-                                    'Red',
-                                    'Blue',
-                                    'Yellow'
-                                  ],
-                                  datasets: [{
-                                    label: 'My First Dataset',
-                                    data: [300, 50, 100],
-                                    backgroundColor: [
-                                      'rgb(255, 99, 132)',
-                                      'rgb(54, 162, 235)',
-                                      'rgb(255, 205, 86)'
-                                    ],
-                                    hoverOffset: 4
-                                  }]
-                                }
-                              });
-                            });
-                          </script>
+
+                      <br>
+                      <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[0]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                  
+                  
+                          
                   </div>
               </div>
           </div>
@@ -304,36 +287,19 @@
                       {{user[1]['shopping_results'][0]['source']}}
                     </p>
 
-                    <a href="{{user[1]['shopping_results'][0]['link']}}" class="btn btn-outline-primary btn-sm">
+                    <a href="{{user[1]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
                         Visit Site
                     </a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                        <i class="far fa-heart"></i></a>
-                        <canvas id="pieChart" style="max-height: 100px;"></canvas>
-                        <script>
-                          document.addEventListener("DOMContentLoaded", () => {
-                            new Chart(document.querySelector('#pieChart'), {
-                              type: 'pie',
-                              data: {
-                                labels: [
-                                  'Red',
-                                  'Blue',
-                                  'Yellow'
-                                ],
-                                datasets: [{
-                                  label: 'My First Dataset',
-                                  data: [300, 50, 100],
-                                  backgroundColor: [
-                                    'rgb(255, 99, 132)',
-                                    'rgb(54, 162, 235)',
-                                    'rgb(255, 205, 86)'
-                                  ],
-                                  hoverOffset: 4
-                                }]
-                              }
-                            });
-                          });
-                        </script>
+
+                    <br>
+                    <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[1]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                  
+                    
+                        
                 </div>
             </div>
         </div>
@@ -348,11 +314,17 @@
                       {{user[2]['shopping_results'][0]['source']}}
                     </p>
 
-                    <a href="{{user[2]['shopping_results'][0]['link']}}" class="btn btn-outline-primary btn-sm">
+                    <a href="{{user[2]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
                         Visit Site
                     </a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                        <i class="far fa-heart"></i></a>
+
+                    <br>
+                    <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[2]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                    
                 </div>
             </div>
         </div>
@@ -374,11 +346,17 @@
                     {{user[3]['shopping_results'][0]['source']}}
                   </p>
 
-                  <a href="{{user[3]['shopping_results'][0]['link']}}" class="btn btn-outline-primary btn-sm">
+                  <a href="{{user[3]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
                       Visit Site
                   </a>
-                  <a href="#" class="btn btn-outline-secondary btn-sm">
-                      <i class="far fa-heart"></i></a>
+
+                  <br>
+                  <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[3]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                  
               </div>
           </div>
       </div>
@@ -393,11 +371,19 @@
                     {{user[4]['shopping_results'][0]['source']}}
                   </p>
                     
-                  <a href="{{user[4]['shopping_results'][0]['link']}}" class="btn btn-outline-primary btn-sm">
+                  <a href="{{user[4]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
                       Visit Site
                   </a>
-                  <a href="#" class="btn btn-outline-secondary btn-sm">
-                      <i class="far fa-heart"></i></a>
+
+                  <!-- <input type="submit" name="submit_button" name = "url" value="{{user[4]['shopping_results'][0]['price_comparison_url']}}" action="{{ url_for('compare') }}"> -->
+                  
+                  <br>
+                  <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[4]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                  
               </div>
           </div>
       </div>
@@ -412,31 +398,108 @@
                   {{user[5]['shopping_results'][0]['source']}}
                 </p>
 
-                <a href="{{user[5]['shopping_results'][0]['link']}}" class="btn btn-outline-primary btn-sm">
+                <a href="{{user[5]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
                     Visit Site
                 </a>
-                <a href="#" class="btn btn-outline-secondary btn-sm">
-                    <i class="far fa-heart"></i></a>
+
+                <br>
+                <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[5]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                
             </div>
         </div>
     </div>
   </div>
 </div>
 
-<table id="table" data-toggle="table" class="display table table-bordered" data-url= "static/json/data.json" data-height="299">
-  <thead>
-      <tr>
-          <th data-field="name">Name</th>
-          <th data-field="description">Description</th>
-          
-      </tr>
-  </thead>
-</table>
 
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+<div class="container">
+  <div class="row">
+      <div class="col-lg-4 mb-4">
+          <div class="card text-center">
+              <img class="card-img-top" src="{{user[6]['shopping_results'][0]['image']}}" alt="" width="300" height="300" class="img-fluid">
+
+              <div class="card-body">
+                  <h5 class="card-title">{{user[6]['shopping_results'][0]['title']}}</h5>
+                  <p class="card-text">
+                    Price : {{user[6]['shopping_results'][0]['price']}}<br>
+                    {{user[6]['shopping_results'][0]['source']}}
+                  </p>
+
+                  <a href="{{user[6]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
+                      Visit Site
+                  </a>
+
+                  <br>
+                  <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[6]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                  
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+          <div class="card text-center">
+              <img class="card-img-top" src="{{user[7]['shopping_results'][0]['image']}}" alt="" width="300" height="300">
+
+              <div class="card-body">
+                  <h5 class="card-title">{{user[7]['shopping_results'][0]['title']}}</h5>
+                  <p class="card-text">
+                    Price : {{user[7]['shopping_results'][0]['price']}}<br>
+                    {{user[7]['shopping_results'][0]['source']}}
+                  </p>
+                    
+                  <a href="{{user[7]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
+                      Visit Site
+                  </a>
+
+                  <!-- <input type="submit" name="submit_button" name = "url" value="{{user[4]['shopping_results'][0]['price_comparison_url']}}" action="{{ url_for('compare') }}"> -->
+                  
+                  <br>
+                  <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[7]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                  
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card text-center">
+            <img class="card-img-top" src="{{user[8]['shopping_results'][0]['image']}}" alt="" width="300" height="300" class="img-fluid">
+
+            <div class="card-body">
+                <h5 class="card-title">{{user[8]['shopping_results'][0]['title']}}</h5>
+                <p class="card-text">
+                  Price : {{user[8]['shopping_results'][0]['price']}}<br>
+                  {{user[8]['shopping_results'][0]['source']}}
+                </p>
+
+                <a href="{{user[8]['shopping_results'][0]['company_url']}}" class="btn btn-primary">
+                    Visit Site
+                </a>
+
+                <br>
+                <br>
+                  <form method="POST" action="{{ url_for('compare') }}">
+                    
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[8]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
+                  </form>
+                
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
     
