@@ -3,6 +3,7 @@ from flask import Flask, redirect, render_template, request, session
 import pymongo
 import requests
 import json
+import base64
 
 app = Flask(__name__)
 app.secret_key = "testing"
@@ -10,9 +11,9 @@ client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
 db = client.get_database('total_records')
 records = db.register
 
-scrapper = "http://127.0.0.1:5001/fetchprod?name="
-comparator = "http://127.0.0.1:5001/fetchcomparison?url="
-# analyzer = ""
+scrapper = "http://10.201.77.70:2593/fetchprod?name="
+comparator = "http://10.201.77.70:2593/fetchcomparison?url="
+analyzer = "http://10.201.77.70:2593/fetchreviews?name="
 global reviews_list
 
 @app.route('/sign_out')
@@ -28,10 +29,14 @@ def home_page(user=""):
 
 @app.route('/categories/<string:user>', methods = ['get'])
 def categories(user):
+    global reviews_list
     response = requests.get(url = scrapper+user)
+    review_response = requests.get(url = analyzer+user)
+    review_data = review_response.json()
     data = response.json()
     products_list = data['result']
     products_list = products_list[0:9]
+    reviews_list = review_data['result']
     return render_template('sample.html', user=products_list, name = user)
 
 
@@ -39,120 +44,13 @@ def categories(user):
 def search(user=""):
     user = request.form.get('query')
     response = requests.get(url = scrapper+user)
+    review_response = requests.get(url = analyzer+user)
+    review_data = review_response.json()
     data = response.json()
     products_list = data['result']
     products_list = products_list[0:9]
     global reviews_list
-    reviews_list = [
-    {
-      "shopping_results": [
-        {
-          "link": "https://stockx.com/air-jordan-1-retro-high-og-seafoam-ps%3Fcountry%3DUS%26currencyCode%3DUSD%26size%3D12C%26srsltid%3DAWLEVJzkme5036bgKY-I9Tszk7eGrdtI_EcMRp4PrJ536zICLpIH08E3fs4&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykIJA&usg=AOvVaw3z0n728kCMKu-6gVo5VT5e", 
-          "price": "$111.00", 
-          "title": "StockXOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.goat.com/sneakers/air-jordan-1-retro-high-og-ps-seafoam-cu0449-002&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykIKA&usg=AOvVaw36NXnrKBXX7SqUjC_HzMxw", 
-          "price": "$116.00", 
-          "title": "GOATOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.flightclub.com/air-jordan-1-retro-high-og-ps-seafoam-cu0449-002&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykILQ&usg=AOvVaw3zoP2NVVzoUvQSIOuFRw-v", 
-          "price": "$116.00", 
-          "title": "Flight ClubOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.kickscrew.com/products/air-jordan-1-retro-high-og-ps-seafoam-cu0449-002%3Fvariant%3D40913738498243%26currency%3DUSD%26utm_medium%3Dproduct_sync%26utm_source%3Dgoogle%26utm_content%3Dsag_organic%26utm_campaign%3Dsag_organic%26srsltid%3DAWLEVJz6tFu00CRw3bAw3-yOIanhk4qk_aoWwU1RuCf6eyDzm8M8itb8nLw&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykIMQ&usg=AOvVaw1bSc7LcmVcHg1TIigW_qso", 
-          "price": "$190.00", 
-          "title": "kickscrew.comOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.farfetch.com/shopping/kids/jordan-kids-air-jordan-1-retro-high-og-sneakers-item-17234149.aspx%3Ffsb%3D1%26size%3D20%26storeid%3D11218&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykINQ&usg=AOvVaw0DzWpVKj8LoI-LmndoJUsW", 
-          "price": "$147.00", 
-          "title": "farfetch.comOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.farfetch.com/shopping/kids/jordan-kids-air-jordan-1-retro-high-og-sneakers-item-17234149.aspx%3Ffsb%3D1%26size%3D20%26storeid%3D11218&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykINQ&usg=AOvVaw0DzWpVKj8LoI-LmndoJUsW", 
-          "price": "$147.00", 
-          "title": "farfetch.comOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.farfetch.com/shopping/kids/jordan-kids-air-jordan-1-retro-high-og-sneakers-item-17234149.aspx%3Ffsb%3D1%26size%3D20%26storeid%3D11218&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykINQ&usg=AOvVaw0DzWpVKj8LoI-LmndoJUsW", 
-          "price": "$147.00", 
-          "title": "farfetch.comOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.farfetch.com/shopping/kids/jordan-kids-air-jordan-1-retro-high-og-sneakers-item-17234149.aspx%3Ffsb%3D1%26size%3D20%26storeid%3D11218&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykINQ&usg=AOvVaw0DzWpVKj8LoI-LmndoJUsW", 
-          "price": "$147.00", 
-          "title": "farfetch.comOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }, 
-    {
-      "shopping_results": [
-        {
-          "link": "https://www.farfetch.com/shopping/kids/jordan-kids-air-jordan-1-retro-high-og-sneakers-item-17234149.aspx%3Ffsb%3D1%26size%3D20%26storeid%3D11218&sa=U&ved=0ahUKEwjdka356av3AhVIbs0KHWh3DyYQ2ykINQ&usg=AOvVaw0DzWpVKj8LoI-LmndoJUsW", 
-          "price": "$147.00", 
-          "title": "farfetch.comOpens in a new window",
-          "positive" : 10,
-          "neutral": 15,
-          "negative": 5
-        }
-      ]
-    }
-  ]
+    reviews_list = review_data['result']
 
     return render_template('sample.html', user=products_list, name = user)
 #     
@@ -160,19 +58,46 @@ def search(user=""):
 @app.route('/comparison', methods = ['post'])
 def compare():
     # print(type(request.form.get('url')))
-    global reviews_list
-    print(len(reviews_list))
+
     pc_url = request.form.get('url')
-    print(pc_url)
     index = int(request.form.get('index'))
-    print(index)
+
+    global reviews_list
+    
     if(pc_url == ""):
-        return render_template('noresults.html')
+        products_list = [
+            {
+      "shopping_results": [
+        {
+          "link": "noresults.html", 
+          "price": "No Results for comparison", 
+          "title": "No Results for comparison"
+        }
+      ]
+    }
+        ]
+        if(index > len(reviews_list)-1):
+            polarity = reviews_list[0]['polarity']
+            polarity = round(polarity, 2)
+            return render_template('comparison.html', user = products_list, reviews = reviews_list[0], polarity = polarity*100, revpolarity = 100*(1 - polarity))
+    
+        polarity = reviews_list[index]['polarity']
+        polarity = round(polarity, 2)
+        
+        return render_template('comparison.html', user = products_list, reviews = reviews_list[index], polarity = polarity*100, revpolarity = 100*(1 - polarity))
+    
     response = requests.get(url = comparator+pc_url)
     data = response.json()
     products_list = data['result']
-
-    return render_template('comparison.html', user = products_list, reviews = reviews_list[index])
+    
+    if(index > len(reviews_list)-1):
+        polarity = reviews_list[0]['polarity']
+        polarity = round(polarity, 2)
+        return render_template('comparison.html', user = products_list, reviews = reviews_list[0], polarity = polarity*100, revpolarity = 100*(1 - polarity))
+    
+    polarity = reviews_list[index]['polarity']
+    polarity = round(polarity, 2)
+    return render_template('comparison.html', user = products_list, reviews = reviews_list[index], polarity = polarity*100, revpolarity = 100*(1 - polarity))
 
 @app.route('/pages_faq')
 def pages_faq():
@@ -304,4 +229,4 @@ def icons_boxicons():
    return render_template('icons-boxicons.html')
 
 if __name__ == '__main__':
-   app.run(debug = True)
+   app.run(host = "0.0.0.0", port = 5000, debug = True)

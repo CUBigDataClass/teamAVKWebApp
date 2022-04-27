@@ -203,7 +203,7 @@
       <li class="nav-item">
         <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Mobile') }}">
           <i class="bi bi-grid"></i>
-          <span>Electronis</span>
+          <span>Electronics</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
@@ -294,8 +294,8 @@
                     <br>
                     <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[1]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 1 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[1]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                   
                     
@@ -321,8 +321,8 @@
                     <br>
                     <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[2]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 2 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[2]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                     
                 </div>
@@ -353,8 +353,8 @@
                   <br>
                   <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[3]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 3 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[3]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                   
               </div>
@@ -380,8 +380,8 @@
                   <br>
                   <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[4]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 4 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[4]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                   
               </div>
@@ -405,8 +405,8 @@
                 <br>
                 <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[5]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 5 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[5]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                 
             </div>
@@ -436,8 +436,8 @@
                   <br>
                   <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[6]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 6 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[6]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                   
               </div>
@@ -463,8 +463,8 @@
                   <br>
                   <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[7]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 7 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[7]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                   
               </div>
@@ -488,8 +488,8 @@
                 <br>
                 <br>
                   <form method="POST" action="{{ url_for('compare') }}">
-                    
-                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{[user[8]['shopping_results'][0]['price_comparison_url'], 0]}}">Compare Prices</button>
+                    <input type="hidden" name="index" value="{{ 8 }}"/>
+                    <button class="btn btn-outline-primary btn-sm" name="url" type="submit" value="{{user[8]['shopping_results'][0]['price_comparison_url']}}">Compare Prices</button>
                   </form>
                 
             </div>

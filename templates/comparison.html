@@ -203,7 +203,7 @@
         <li class="nav-item">
           <a class="nav-link " name="tag" value = "Electronics" href="{{ url_for('categories', user = 'Mobile') }}">
             <i class="bi bi-grid"></i>
-            <span>Electronis</span>
+            <span>Electronics</span>
           </a>
         </li><!-- End Dashboard Nav -->
   
@@ -272,7 +272,8 @@
 <br>
 <br>
 
-  <canvas id="pieChart" style="max-height: 400px;"></canvas>
+
+  <!-- <canvas id="pieChart" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
                   new Chart(document.querySelector('#pieChart'), {
@@ -280,13 +281,52 @@
 
                     data: {
                       labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow'
+                        'Positive',
+                        'Neutral',
+                        'Negative'
                       ],
                       datasets: [{
                         label: 'My First Dataset',
-                        data: ['{{reviews['shopping_results'][0]['positive']}}', '{{reviews['shopping_results'][0]['neutral']}}', '{{reviews['shopping_results'][0]['negative']}}'],
+                        data: ['{{reviews['no_pos']}}', '{{reviews['no_neg']}}', '{{reviews['no_neutral']}}'],
+                        backgroundColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(54, 162, 235)',
+                          'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                      }]
+                    }
+                  });
+                });
+              </script> -->
+
+
+<br>
+<br>
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <canvas id="pieChart" style="max-height: 400px;"></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#pieChart'), {
+                    type: 'pie',
+
+                    data: {
+                      labels: [
+                        'Positive',
+                        'Neutral',
+                        'Negative'
+                      ],
+                      datasets: [{
+                        label: 'My First Dataset',
+                        data: ['{{reviews['no_pos']}}', '{{reviews['no_neg']}}', '{{reviews['no_neutral']}}'],
                         backgroundColor: [
                           'rgb(255, 99, 132)',
                           'rgb(54, 162, 235)',
@@ -298,7 +338,93 @@
                   });
                 });
               </script>
-  
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <img src="data:;base64,{{ reviews['word_cloud'] }}" class="center" width="600" height="400"/>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+<div class="pagetitle">
+    <h1>The average customer's opinion</h1>
+  </div>
+<br>
+<br>
+	<!-- Stacked Bar Chart -->
+	<div class="stacked-bar-chart w-100">
+		<div class="row mb-2">
+			<div class="col-1 align-self-center">Polarity</div>
+			<div class="col">
+				<div class="row">
+					<div class="col-auto text-center bar-a" style="width: {{polarity}}%">{{polarity}}%</div>
+					<div class="col-auto text-center bar-b" style="width: {{revpolarity}}%"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card text-center">
+                
+                <div class="card-body">
+                    <h5 class="card-title">Top Positive Reviews</h5>
+                    <p class="card-text">
+                        {{reviews['pos_reviews'][0]}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card text-center">
+              
+              <div class="card-body">
+                <h5 class="card-title">Top Negative Reviews</h5>
+                <p class="card-text">
+                    {{reviews['neg_reviews'][0]}}
+                </p> 
+            </div>
+          </div>
+      </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card text-center">
+              
+              <div class="card-body">
+                <h5 class="card-title">Top Neutral Reviews</h5>
+                <p class="card-text">
+                    {{reviews['neutral_reviews'][0]}}
+                </p>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+ 
   <!-- <script src="https://code.jquery.com/jquery.min.js"></script>
   <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.js"></script>
