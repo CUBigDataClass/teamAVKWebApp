@@ -11,9 +11,9 @@ client = pymongo.MongoClient("mongodb://127.0.0.1:27017")
 db = client.get_database('total_records')
 records = db.register
 
-scrapper = "http://10.201.77.70:2593/fetchprod?name="
-comparator = "http://10.201.77.70:2593/fetchcomparison?url="
-analyzer = "http://10.201.77.70:2593/fetchreviews?name="
+scrapper = "http://34.72.193.32/fetchprod?name="
+comparator = "http://34.72.193.32/fetchcomparison?url="
+analyzer = "http://34.72.193.32/fetchreviews?name="
 global reviews_list
 
 @app.route('/sign_out')
